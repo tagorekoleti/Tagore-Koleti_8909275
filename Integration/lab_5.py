@@ -1,18 +1,10 @@
 # Importing required libraries
-import os
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 import time
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-DRIVER_BIN = os.path.join(PROJECT_ROOT, "chromedriver")
-
-# browser = webdriver.Chrome(executable_path = DRIVER_BIN)
-
 # Setting up the webdriver
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver = webdriver.Chrome()
 
 # Navigating to the Amazon.ca homepage
 driver.get("https://www.amazon.ca")
@@ -33,8 +25,7 @@ time.sleep(5)
 assert "laptop" in driver.title
 
 # Selecting a laptop from the search results
-# laptop_link = driver.find_element("xpath","/html/body/div[1]/div[2]/div[1]/div[1]/div/span[1]/div[1]/div[14]/div/div/div/div/div[1]/span/a/div/img")
-laptop_link = driver.find_element("xpath","//*[@id=\"search\"]/div[1]/div[1]/div/span[1]/div[1]/div[3]")
+laptop_link = driver.find_element("xpath","/html/body/div[1]/div[2]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/div/div/div[1]/span/a/div/img")
 # laptop_link = driver.find_element("By.CSS_SELECTOR","span[data-component-type='s-product-image'] a")
 laptop_link.click()
 
